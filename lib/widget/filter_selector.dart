@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'carousel_flowdelegate.dart';
 import 'filter_item.dart';
-import 'package:flutter/rendering.dart' show ViewportOffset;
+import 'carousel_flowdelegate.dart';
+import 'package:flutter/rendering.dart';
 
 @immutable
 class FilterSelector extends StatefulWidget {
@@ -9,12 +9,14 @@ class FilterSelector extends StatefulWidget {
     super.key,
     required this.filters,
     required this.onFilterChanged,
+    required this.imagePath,
     this.padding = const EdgeInsets.symmetric(vertical: 24),
   });
 
   final List<Color> filters;
   final void Function(Color selectedColor) onFilterChanged;
   final EdgeInsets padding;
+  final String imagePath;
 
   @override
   State<FilterSelector> createState() => _FilterSelectorState();
@@ -131,6 +133,7 @@ class _FilterSelectorState extends State<FilterSelector> {
             FilterItem(
               onFilterSelected: () => _onFilterTapped(i),
               color: itemColor(i),
+              imagePath: widget.imagePath,
             ),
         ],
       ),
